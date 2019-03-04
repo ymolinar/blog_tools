@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template">
+    <!--Duplication link-->
+    <t t-name="blog_tools.DuplicationLink">
+        <a data-action="duplicate-blog-post" href="#" class="duplicate-blog-post">Duplicate</a>
+    </t>
+    <!--Duplication form template-->
+    <t t-name="blog_tools.DuplicationForm">
+        <div class="form-container">
+            <form class="form-horizontal" action="/blog/duplicate-blog-post" method="POST">
+                <input type="hidden" name="csrf_token" t-att-value="csrf_token"/>
+                <input name="blog_post_id" t-att-value="res_id" type="hidden"/>
+                <div class="form-group">
+                    <label for="post_count" class="col-sm-3 control-label">Post Count</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="post_count" id="post_count">
+                            <option value="2">2 times</option>
+                            <option value="4">4 times</option>
+                            <option value="8">8 times</option>
+                            <option value="16">16 times</option>
+                            <option value="32">32 times</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title_words_count" class="col-sm-3 control-label">Title Words</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="title_words_count" id="title_words_count">
+                            <option value="2">2 words</option>
+                            <option value="5">5 words</option>
+                            <option value="6">6 words</option>
+                            <option value="7">7 words</option>
+                            <option value="8">8 words</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="starting_year" class="col-sm-3 control-label">Starting Year</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="starting_year" id="starting_year">
+                            <option t-foreach="years" t-as="year" t-att-value="year">
+                                <t t-esc="year"/>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </t>
+</templates>

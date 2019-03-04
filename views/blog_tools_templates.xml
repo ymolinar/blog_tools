@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="user_navbar" inherit_id="website.user_navbar">
+        <xpath expr="//li[@t-if='not translatable']" position="before">
+            <li groups="website.group_website_designer" t-att-data-csrf-token="request.csrf_token()"
+                t-att-data-res-id="blog_post.id if blog_post else None" class="blog-tool-duplication"
+                t-if="main_object._name == 'blog.post'"/>
+        </xpath>
+    </template>
+</odoo>
